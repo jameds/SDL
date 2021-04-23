@@ -1222,7 +1222,7 @@ SDL_RestoreMousePosition(SDL_Window *window)
 extern Uint32 WINRT_DetectWindowFlags(SDL_Window * window);
 #endif
 
-static int
+int
 SDL_UpdateFullscreenMode(SDL_Window * window, SDL_bool fullscreen)
 {
     SDL_VideoDisplay *display;

@@ -457,6 +457,7 @@ extern SDL_bool SDL_IsVideoContextExternal(void);
 extern void SDL_GL_DeduceMaxSupportedESProfile(int* major, int* minor);
 
 extern int SDL_RecreateWindow(SDL_Window * window, Uint32 flags);
+extern int SDL_UpdateFullscreenMode(SDL_Window * window, SDL_bool fullscreen);
 extern SDL_bool SDL_HasWindows(void);
 
 extern void SDL_OnWindowShown(SDL_Window * window);

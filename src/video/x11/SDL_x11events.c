@@ -1335,12 +1335,15 @@ X11_DispatchEvent(_THIS)
                 const Uint32 flags = X11_GetNetWMState(_this, xevent.xproperty.window);
                 const Uint32 changed = flags ^ data->window->flags;
 
-                if ((changed & SDL_WINDOW_HIDDEN) || (changed & SDL_WINDOW_FULLSCREEN)) {
+                if (changed & SDL_WINDOW_HIDDEN) {
                      if (flags & SDL_WINDOW_HIDDEN) {
                          X11_DispatchUnmapNotify(data);
                      } else {
                          X11_DispatchMapNotify(data);
                     }
+                } else if (changed & SDL_WINDOW_FULLSCREEN) {
+                    data->window->flags ^= (changed & SDL_WINDOW_FULLSCREEN);
+                    SDL_UpdateFullscreenMode(data->window, FULLSCREEN_VISIBLE(data->window));
                 }
 
                 if (changed & SDL_WINDOW_MAXIMIZED) {
